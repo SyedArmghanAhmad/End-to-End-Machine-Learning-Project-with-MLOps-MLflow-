@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Prediction Results | WineQuality.ai</title>
+    <link rel="icon" type="image/x-icon" href="static/assets/favicon.ico">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link href="static/css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero result-hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <nav class="navbar">
+                <div class="navbar-brand">WineQuality.ai</div>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Results Section -->
+    <section class="section results-section">
+        <div class="container">
+            <div class="result-card">
+                <div class="result-header">
+                    <h2>Wine Quality Prediction</h2>
+                    <p>Based on the chemical properties you provided</p>
+                </div>
+                
+                <div class="result-content">
+                    <div class="quality-rating">
+                        <div class="rating-circle">
+                            <span>{{ prediction }}</span>
+                            <small>/ 8</small>
+                        </div>
+                        <h3>Quality Score</h3>
+                    </div>
+                    
+                    <div class="quality-description">
+                        {% if prediction|int >= 7 %}
+                        <div class="quality-high">
+                            <i class="fas fa-medal"></i>
+                            <h4>Excellent Quality</h4>
+                            <p>This wine scores in the top tier of our quality assessment. It likely has excellent balance, aroma, and flavor characteristics that would be appreciated by connoisseurs.</p>
+                        </div>
+                        {% elif prediction|int >= 5 %}
+                        <div class="quality-medium">
+                            <i class="fas fa-thumbs-up"></i>
+                            <h4>Good Quality</h4>
+                            <p>This is a solid, well-made wine that should be enjoyable to most consumers. It may benefit from some additional aging or pairing with the right foods.</p>
+                        </div>
+                        {% else %}
+                        <div class="quality-low">
+                            <i class="fas fa-info-circle"></i>
+                            <h4>Standard Quality</h4>
+                            <p>This wine meets basic quality standards but may lack some complexity or balance. Consider pairing with food to enhance the tasting experience.</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="result-actions">
+                    <a href="/" class="btn-primary">
+                        <i class="fas fa-redo"></i> Test Another Wine
+                    </a>
+                    <a href="#interpretation" class="btn-secondary">
+                        <i class="fas fa-chart-bar"></i> See Detailed Analysis
+                    </a>
+                </div>
+            </div>
+            
+            <div id="interpretation" class="interpretation-section">
+                <h3>Understanding Your Results</h3>
+                <p>Our quality scale ranges from 3 (lowest) to 8 (highest), based on extensive sensory evaluations by wine experts. Here's what the scores typically mean:</p>
+                
+                <div class="interpretation-grid">
+                    <div class="interpretation-item">
+                        <div class="interpretation-range">7-8</div>
+                        <h4>Excellent</h4>
+                        <p>Outstanding wines with complex aromas, balanced flavors, and long finish.</p>
+                    </div>
+                    <div class="interpretation-item">
+                        <div class="interpretation-range">5-6</div>
+                        <h4>Good</h4>
+                        <p>Well-made wines with pleasant characteristics and good balance.</p>
+                    </div>
+                    <div class="interpretation-item">
+                        <div class="interpretation-range">3-4</div>
+                        <h4>Standard</h4>
+                        <p>Acceptable quality but may lack complexity or have minor flaws.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>WineQuality.ai</h3>
+                    <p>Using AI to revolutionize wine quality assessment</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <h4>Connect With Us</h4>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/syed-armghan-ahmad/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/SyedArmghanAhmad" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="mailto:contact@winequality.ai"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 WineQuality.ai. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="static/js/scripts.js"></script>
+</body>
+</html>
